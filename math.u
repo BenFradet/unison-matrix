@@ -1,0 +1,20 @@
+
+use Optional None Some
+use Sequence unfold
+use Universal <
+
+namespace Math where
+
+  zeros : Nat -> [Nat]
+  zeros n =
+    f i = if i < n then Some(0, i + 1) else None
+    unfold 0 f
+
+> x = 1
+> y = 8
+
+use Math zeros
+
+> zeros x
+> zeros y
+
