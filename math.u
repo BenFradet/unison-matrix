@@ -3,12 +3,18 @@ use Optional None Some
 use Sequence unfold
 use Universal <
 
+namespace Sequence where
+
+  replicate : Nat -> a -> [a]
+  replicate n e =
+    f i = if i < n then Some(e, i + 1) else None
+    unfold 0 f
+
 namespace Math where
 
   zeros : Nat -> [Nat]
-  zeros n =
-    f i = if i < n then Some(0, i + 1) else None
-    unfold 0 f
+  zeros n = replicate n 0
+
 
 > x = 1
 > y = 8
