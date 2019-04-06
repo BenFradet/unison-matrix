@@ -1,0 +1,16 @@
+
+use Math zeros
+use Sequence replicate
+use Text ++
+
+namespace Test where
+
+  test : Text -> Boolean -> Text
+  test text assertion =
+    if assertion then "ok " ++ text
+    else "nok " ++ text
+
+expected = [0, 0, 0, 0]
+
+> test "replicate" ((replicate 4 0) == expected)
+> test "zeros" ((zeros 4) == expected)
