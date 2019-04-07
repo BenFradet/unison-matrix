@@ -1,6 +1,6 @@
 
 use Optional None Some
-use Sequence unfold
+use Sequence at snoc unfold
 use Universal <
 
 namespace Sequence where
@@ -15,12 +15,20 @@ namespace Math where
   zeros : Nat -> [Nat]
   zeros n = replicate n 0
 
+  sumsq : [Nat] -> [Nat] -> [Nat]
+  sumsq as bs =
+    go acc i = case (at i as, at i bs) of
+      (None, _) -> acc
+      (_, None) -> acc
+      (Some a, Some b) -> go (acc `snoc` (a * b)) (i + 1)
+    go [] 0
 
 > x = 1
 > y = 8
 
-use Math zeros
+use Math zeros sumsq
 
 > zeros x
 > zeros y
+> sumsq [1, 2, 3] [1, 2, 3]
 
