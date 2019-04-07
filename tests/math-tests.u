@@ -1,6 +1,6 @@
 
-use Math sumsq zeros
-use Sequence replicate
+use Math minus sumsq zeros
+use Sequence foldb replicate zipMap
 use Text ++
 
 namespace Test where
@@ -10,9 +10,15 @@ namespace Test where
     if assertion then "ok " ++ text
     else "nok " ++ text
 
-expected = [0, 0, 0, 0]
+-- Sequence
+> test "replicate" ((replicate 4 0) == [0, 0, 0, 0])
+> test "zipMap" ((zipMap (++) ["a"] ["b"]) == ["ab"])
 
-> test "replicate" ((replicate 4 0) == expected)
-> test "zeros" ((zeros 4) == expected)
-> test "sumsq" ((sumsq [1, 4, 9] [1, 4, 9]) == [1, 16, 81])
+-- Math
+> test "zeros" ((zeros 4) == [+0, +0, +0, +0])
+
+x = [+1, +4, +9]
+
+> test "sumsq" ((sumsq x x) == [+1, +16, +81])
+> test "minus" ((minus x x) == [+0, +0, +0])
 
