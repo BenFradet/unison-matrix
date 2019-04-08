@@ -10,8 +10,8 @@ namespace Sequence where
     f i = if i < n then Some(e, i + 1) else None
     unfold 0 f
 
-  zipMap : (a -> a -> a) -> [a] -> [a] -> [a]
-  zipMap f as bs =
+  zipWith : (a -> b -> c) -> [a] -> [b] -> [c]
+  zipWith f as bs =
     go acc i = case (at i as, at i bs) of
       (None, _) -> acc
       (_, None) -> acc
@@ -24,10 +24,10 @@ namespace Math where
   zeros n = replicate n +0
 
   sumsq : [Int] -> [Int] -> [Int]
-  sumsq as bs = zipMap (*) as bs
+  sumsq as bs = zipWith (*) as bs
 
   minus : [Int] -> [Int] -> [Int]
-  minus as bs = zipMap (-) as bs
+  minus as bs = zipWith (-) as bs
 
 use Math zeros sumsq
 

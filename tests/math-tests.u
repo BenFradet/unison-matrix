@@ -1,6 +1,6 @@
 
 use Math minus sumsq zeros
-use Sequence foldb replicate zipMap
+use Sequence foldb replicate zipWith
 use Text ++
 
 namespace Test where
@@ -12,7 +12,7 @@ namespace Test where
 
 -- Sequence
 > test "replicate" ((replicate 4 0) == [0, 0, 0, 0])
-> test "zipMap" ((zipMap (++) ["a"] ["b"]) == ["ab"])
+> test "zipWith" ((zipWith (++) ["a"] ["b"]) == ["ab"])
 
 -- Math
 > test "zeros" ((zeros 4) == [+0, +0, +0, +0])
