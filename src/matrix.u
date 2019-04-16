@@ -1,0 +1,15 @@
+
+use Universal.==
+
+type Matrix a = Matrix Nat Nat [a]
+
+use Matrix Matrix
+
+namespace Matrix where
+  eq : Matrix a -> Matrix a -> Boolean
+  eq m1 m2 = case (m1, m2) of
+    (Matrix r1 c1 as1, Matrix r2 c2 as2) -> and (and (r1 == r2) (c1 == c2)) (as1 == as2)
+    _ -> false
+
+> eq (Matrix 1 2 [1, 2]) (Matrix 1 2 [1, 2])
+> eq (Matrix 1 1 [1, 2]) (Matrix 1 2 [1, 2])

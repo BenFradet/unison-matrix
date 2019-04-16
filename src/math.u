@@ -24,10 +24,10 @@ namespace Math where
   zeros n = replicate n +0
 
   sumsq : [Int] -> [Int] -> [Int]
-  sumsq as bs = zipWith (*) as bs
+  sumsq as bs = zipWith (Int.*) as bs
 
   minus : [Int] -> [Int] -> [Int]
-  minus as bs = zipWith (-) as bs
+  minus as bs = zipWith (Int.-) as bs
 
 use Math zeros sumsq
 
@@ -37,3 +37,4 @@ x = [+1, +2, +3]
 > sumsq x x
 > minus x x
 
+> [1, 2, 3] Universal.== [4, 5, 6]
