@@ -1,0 +1,9 @@
+
+use Text ++
+
+namespace Test where
+
+  test : Text -> Boolean -> Text
+  test text assertion =
+    if assertion then "ok " ++ text
+    else "nok " ++ text

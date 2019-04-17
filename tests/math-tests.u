@@ -1,14 +1,8 @@
 
 use Math minus sumsq zeros
 use Sequence foldb replicate zipWith
+use Test test
 use Text ++
-
-namespace Test where
-
-  test : Text -> Boolean -> Text
-  test text assertion =
-    if assertion then "ok " ++ text
-    else "nok " ++ text
 
 -- Sequence
 > test "replicate" ((replicate 4 0) == [0, 0, 0, 0])
@@ -21,4 +15,3 @@ x = [+1, +4, +9]
 
 > test "sumsq" ((sumsq x x) == [+1, +16, +81])
 > test "minus" ((minus x x) == [+0, +0, +0])
-
