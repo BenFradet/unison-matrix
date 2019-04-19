@@ -36,5 +36,3 @@ x = [+1, +2, +3]
 > zeros 8
 > sumsq x x
 > minus x x
-
-> [1, 2, 3] Universal.== [4, 5, 6]

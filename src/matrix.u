@@ -1,4 +1,5 @@
 
+use Sequence replicate
 use Universal.==
 
 type Matrix a = Matrix Nat Nat [a]
@@ -11,5 +12,9 @@ namespace Matrix where
     (Matrix r1 c1 as1, Matrix r2 c2 as2) -> and (and (r1 == r2) (c1 == c2)) (as1 == as2)
     _ -> false
 
+  zero : Nat -> Nat -> Matrix Int
+  zero n m = Matrix n m (replicate (n * m) +0)
+
 > eq (Matrix 1 2 [1, 2]) (Matrix 1 2 [1, 2])
-> eq (Matrix 1 1 [1, 2]) (Matrix 1 2 [1, 2])
+> zero 1 2
+> zero 2 2
