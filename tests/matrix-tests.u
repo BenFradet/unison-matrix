@@ -1,8 +1,11 @@
 
-use Matrix eq
+use Matrix eq zero
 use Test Test
 
 > test "Matrix.eq" (eq (Matrix 1 2 [1, 2]) (Matrix 1 2 [1, 2]) == true)
 > test "Matrix.eq" (eq (Matrix 1 1 [1, 2]) (Matrix 1 2 [1, 2]) == false)
 > test "Matrix.eq" (eq (Matrix 2 2 [1, 2]) (Matrix 1 2 [1, 2]) == false)
 > test "Matrix.eq" (eq (Matrix 1 2 [2, 2]) (Matrix 1 2 [1, 2]) == false)
+
+> test "Matrix.zero" (zero 1 2 == [0, 0])
+> test "Matrix.zero" (zero 2 2 == [0, 0, 0, 0])
