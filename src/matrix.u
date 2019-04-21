@@ -1,5 +1,6 @@
 
-use Sequence replicate
+use Optional None Some
+use Sequence unfold replicate
 use Universal.==
 
 type Matrix a = Matrix Nat Nat [a]
@@ -15,6 +16,29 @@ namespace Matrix where
   zero : Nat -> Nat -> Matrix Int
   zero n m = Matrix n m (replicate (n * m) +0)
 
+  -- todo handle n, m == 0
+  matrix : Nat -> Nat -> ((Nat, Nat) -> a) -> Matrix a
+  matrix n m f =
+    uf p = case p of (i, j) ->
+      if j == m then Some (f (i, j), (i + 1, 1))
+      else if i == (n + 1) then None
+      else Some (f (i, j), (i, j + 1))
+    Matrix n m (unfold (1, 1) uf)
+
+multGen : (Nat, Nat) -> Nat
+multGen p = case p of (i, j) -> i * j
+
+addGen : (Nat, Nat) -> Nat
+addGen p = case p of (i, j) -> i + j
+
 > eq (Matrix 1 2 [1, 2]) (Matrix 1 2 [1, 2])
 > zero 1 2
 > zero 2 2
+> matrix 2 2 multGen
+> matrix 2 3 multGen
+> matrix 3 2 multGen
+> matrix 3 3 multGen
+> matrix 2 2 addGen
+> matrix 2 3 addGen
+> matrix 3 2 addGen
+> matrix 3 3 addGen
