@@ -28,9 +28,6 @@ namespace Matrix where
 multGen : (Nat, Nat) -> Nat
 multGen p = case p of (i, j) -> i * j
 
-addGen : (Nat, Nat) -> Nat
-addGen p = case p of (i, j) -> i + j
-
 > eq (Matrix 1 2 [1, 2]) (Matrix 1 2 [1, 2])
 > zero 1 2
 > zero 2 2
@@ -38,7 +35,3 @@ addGen p = case p of (i, j) -> i + j
 > matrix 2 3 multGen
 > matrix 3 2 multGen
 > matrix 3 3 multGen
-> matrix 2 2 addGen
-> matrix 2 3 addGen
-> matrix 3 2 addGen
-> matrix 3 3 addGen

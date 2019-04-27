@@ -1,11 +1,20 @@
 
-use Matrix eq zero
+use Matrix eq matrix zero
 use Test Test
+use Universal ==
 
-> test "Matrix.eq" (eq (Matrix 1 2 [1, 2]) (Matrix 1 2 [1, 2]) == true)
-> test "Matrix.eq" (eq (Matrix 1 1 [1, 2]) (Matrix 1 2 [1, 2]) == false)
-> test "Matrix.eq" (eq (Matrix 2 2 [1, 2]) (Matrix 1 2 [1, 2]) == false)
-> test "Matrix.eq" (eq (Matrix 1 2 [2, 2]) (Matrix 1 2 [1, 2]) == false)
+> test "Matrix.eq" (eq (Matrix 1 2 [1, 2]) (Matrix.Matrix 1 2 [1, 2]) == true)
+> test "Matrix.eq" (eq (Matrix 1 1 [1, 2]) (Matrix.Matrix 1 2 [1, 2]) == false)
+> test "Matrix.eq" (eq (Matrix 2 2 [1, 2]) (Matrix.Matrix 1 2 [1, 2]) == false)
+> test "Matrix.eq" (eq (Matrix 1 2 [2, 2]) (Matrix.Matrix 1 2 [1, 2]) == false)
 
-> test "Matrix.zero" (zero 1 2 == [0, 0])
-> test "Matrix.zero" (zero 2 2 == [0, 0, 0, 0])
+> test "Matrix.zero" (zero 1 2 == (Matrix.Matrix 1 2 [+0, +0]))
+> test "Matrix.zero" (zero 2 2 == (Matrix.Matrix 2 2 [+0, +0, +0, +0]))
+
+addGen : (Nat, Nat) -> Nat
+addGen p = case p of (i, j) -> i + j
+
+> test "Matrix.matrix" (matrix 2 2 addGen == Matrix.Matrix 2 2 [2, 3, 3, 4])
+> test "Matrix.matrix" (matrix 2 3 addGen == Matrix.Matrix 2 3 [2, 3, 4, 3, 4, 5])
+> test "Matrix.matrix" (matrix 3 2 addGen == Matrix.Matrix 3 2 [2, 3, 3, 4, 4, 5])
+> test "Matrix.matrix" (matrix 3 3 addGen == Matrix.Matrix 3 3 [2, 3, 4, 3, 4, 5, 4, 5, 6])
