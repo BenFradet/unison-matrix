@@ -31,7 +31,7 @@ namespace Math where
 
 use Math zeros sumsq
 
-x = [+1, +2, +3]
+x = [ +1, +2, +3 ]
 
 > zeros 8
 > sumsq x x
