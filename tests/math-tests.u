@@ -1,17 +1,22 @@
 
 use Math minus sumsq zeros
 use Sequence foldb replicate zipWith
-use Test test
+use Test.Result Ok Fail
 use Text ++
 
 -- Sequence
-> test "replicate" ((replicate 4 0) == [0, 0, 0, 0])
-> test "zipWith" ((zipWith (++) ["a"] ["b"]) == ["ab"])
+test> if ((replicate 4 0) == [0, 0, 0, 0]) then Ok "Sequence.replicate"
+  else Fail "(replicate 4 0) != [0, 0, 0, 0]"
+test> if ((zipWith (++) ["a"] ["b"]) == ["ab"]) then Ok "Sequence.zipWith"
+  else Fail "(zipWith (++) [a] [b]) != [ab]"
 
 -- Math
-> test "zeros" ((zeros 4) == [+0, +0, +0, +0])
+test> if ((zeros 4) == [ +0, +0, +0, +0 ]) then Ok "Math.zeros"
+  else Fail "(zeros 4) != [ +0, +0, +0, +0 ]"
 
-x = [+1, +4, +9]
+x = [ +1, +4, +9 ]
 
-> test "sumsq" ((sumsq x x) == [+1, +16, +81])
-> test "minus" ((minus x x) == [+0, +0, +0])
+test> if ((sumsq x x) == [ +1, +16, +81 ]) then Ok "Math.sumsq"
+  else Fail "(sumsq x x) != [ +1, +16, +81 ]"
+test> if ((minus x x) == [ +0, +0, +0 ]) then Ok "Math.minus"
+  else Fail "(minus x x) != [ +0, +0, +0 ]"
