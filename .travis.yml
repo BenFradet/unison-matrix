@@ -1,0 +1,5 @@
+install:
+  - wget https://github.com/unisonweb/unison/releases/download/release%2FM1d/unison-linux64.tar.gz
+  - tar -xzvf unison-linux64.tar.gz
+script:
+  - ./ucm <<< "namespace matrix" <<< "test"
