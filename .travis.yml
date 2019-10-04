@@ -3,3 +3,5 @@ install:
   - tar -xzvf unison-linux64.tar.gz
 script:
   - ./ucm <<< "namespace matrix" <<< "test"
+  - ./ucm <<< "namespace matrix" <<< "test" > result.txt
+  - grep -q "test(s) failing" result.txt; [ $? -eq 0 ] && exit 1 || exit 0
